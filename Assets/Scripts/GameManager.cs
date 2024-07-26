@@ -10,7 +10,7 @@ using System.Net.Sockets;
 
 public class GameManager : MonoBehaviour
 {
-    
+
     public TextMeshProUGUI scoreText;
     public Button button;
     public Button restartGame;
@@ -27,14 +27,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        objectPool.CreatePoolObjects();
-        spawnManager.SpawnFlag();
-        spawnManager.SpawnEnemies(startEnemies);
-       
-        button.onClick.AddListener(StartGame);
-        
 
+        button.onClick.AddListener(StartGame);
     }
+
+
 
 
     public void UpdateScore()
@@ -45,9 +42,13 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        
-        titleScreen.gameObject.SetActive(false);
         worldView.gameObject.SetActive(true);
+        titleScreen.gameObject.SetActive(false);
+        objectPool.CreatePoolObjects();
+        spawnManager.SpawnFlag();
+        spawnManager.SpawnEnemies(startEnemies);
+        
+        
 
     }
 
